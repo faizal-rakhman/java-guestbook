@@ -22,8 +22,8 @@ public class GuestBookRepository {
         return guestBookList;
     }
 
-    public Object get(Integer id) {
-        return null;
+    public GuestBook get(Integer id) {
+        return guestBookList.stream().filter(x -> x.getId().equals(id)).findFirst().orElse(null);
     }
 
     public void delete(Integer id) {

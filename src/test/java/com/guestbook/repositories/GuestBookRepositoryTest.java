@@ -6,6 +6,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 public class GuestBookRepositoryTest {
 
@@ -28,5 +29,31 @@ public class GuestBookRepositoryTest {
         assertEquals(1, guestBookList.size());
         assertEquals("faizal", guestBookList.get(0).getName());
         assertEquals("comment", guestBookList.get(0).getComment());
+    }
+
+    @Test
+    public void shouldGetSingleDataFromList() {
+        GuestBookRepository guestBookRepository = new GuestBookRepository();
+        guestBookRepository.save("data_id_1", "comment");
+        guestBookRepository.save("data_id_2", "comment");
+
+        GuestBook guestBook;
+
+        guestBook = guestBookRepository.get(1);
+        assertEquals("data_id_1", guestBook.getName());
+
+        guestBook = guestBookRepository.get(2);
+        assertEquals("data_id_2", guestBook.getName());
+    }
+
+    @Test
+    public void shouldReturnNullIfDataIsNotFound() {
+        GuestBookRepository guestBookRepository = new GuestBookRepository();
+
+        GuestBook guestBook;
+
+        guestBook = guestBookRepository.get(1);
+        assertNull(guestBook);
+
     }
 }
