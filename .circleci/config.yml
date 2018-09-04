@@ -38,6 +38,16 @@ jobs:
             name: Deploy Master to Heroku
             command: |
               git push https://heroku:fdc863e6-0502-4946-bd46-2b6f722f7fd8@git.heroku.com/java-guestbook.git master
+  deploy_production:
+      docker:
+        - image: buildpack-deps:trusty
+      steps:
+        - checkout
+        - run:
+            name: Deploy Master to Heroku
+            command: |
+              git push https://heroku:fdc863e6-0502-4946-bd46-2b6f722f7fd8@git.heroku.com/java-guestbook-production.git master
+
 workflows:
   version: 2
   build-deploy:
@@ -46,3 +56,7 @@ workflows:
       - deploy:
           requires:
             - build
+      - deploy_production:
+          requires:
+            - build
+            - deploy
