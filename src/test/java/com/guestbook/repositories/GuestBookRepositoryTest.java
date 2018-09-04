@@ -58,8 +58,4 @@ public class GuestBookRepositoryTest {
 
     }
 
-    @Test
-    public void shouldFailed() {
-        assertTrue(false);
-    }
 }
