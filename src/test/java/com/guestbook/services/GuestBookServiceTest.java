@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.junit.Assert.assertTrue;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.times;
@@ -37,5 +38,10 @@ public class GuestBookServiceTest {
         service.get();
 
         verify(repositoryMock, times(1)).get();
+    }
+
+    @Test
+    public void name() {
+        assertTrue(true);
     }
 }
